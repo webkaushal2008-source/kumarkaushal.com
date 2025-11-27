@@ -1,0 +1,710 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume | WebKaushal</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="icon" href="images/Logo!.png">
+
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-soft: rgba(37, 99, 235, 0.08);
+            --bg: #0f172a;
+            --bg-soft: #020617;
+            --card: rgba(15, 23, 42, 0.95);
+            --text: #e5e7eb;
+            --muted: #9ca3af;
+            --border: rgba(148, 163, 184, 0.2);
+            --accent: #22c55e;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.55);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: radial-gradient(circle at top, #1d4ed8 0, #f9fafb 50%, #1d4ed8 100%);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            padding: 40px 16px;
+        }
+
+        .wrapper {
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        .card {
+            background: linear-gradient(135deg, rgba(15,23,42,0.98), rgba(15,23,42,0.96));
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--border);
+            padding: 28px 18px 24px;
+            backdrop-filter: blur(26px);
+        }
+
+        /* Tablet & down – better spacing */
+        @media (max-width: 768px) {
+            body {
+                padding: 24px 12px;
+            }
+
+            .card {
+                padding: 22px 14px 20px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .card {
+                padding: 32px 32px 26px;
+            }
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            border-radius: 999px;
+            background: rgba(37, 99, 235, 0.12);
+            border: 1px solid rgba(37, 99, 235, 0.35);
+            font-size: 12px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #bfdbfe;
+            margin-bottom: 14px;
+        }
+
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+            background: var(--accent);
+            box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
+        }
+
+        /* ===== Resume Layout ===== */
+
+        .resume-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        @media (min-width: 900px) {
+            .resume-layout {
+                flex-direction: row;
+                gap: 26px;
+            }
+        }
+
+        .resume-sidebar {
+            flex: 0 0 260px;
+            max-width: 260px;
+            padding: 18px 16px 18px;
+            border-radius: var(--radius-lg);
+            background: radial-gradient(circle at top left,
+                    rgba(37, 99, 235, 0.18),
+                    rgba(15, 23, 42, 1) 60%);
+            border: 1px solid rgba(37, 99, 235, 0.35);
+        }
+
+        @media (max-width: 899px) {
+            .resume-sidebar {
+                max-width: 100%;
+            }
+        }
+
+        .resume-main {
+            flex: 1;
+            padding: 18px 16px 10px;
+            border-radius: var(--radius-lg);
+            background: radial-gradient(circle at top right,
+                    rgba(34, 197, 94, 0.16),
+                    rgba(15, 23, 42, 1) 65%);
+            border: 1px solid rgba(148, 163, 184, 0.3);
+        }
+
+        /* ==== Avatar square ==== */
+
+        .avatar-wrapper {
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(148, 163, 184, 0.5);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+            margin-bottom: 14px;
+        }
+
+        .avatar-wrapper img {
+            width: 100%;
+            aspect-ratio: 1 / 1;   /* square */
+            height: auto;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .name {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: #f9fafb;
+            margin-bottom: 2px;
+        }
+
+        .role {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #93c5fd;
+            margin-bottom: 8px;
+        }
+
+        .side-section-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--muted);
+            margin: 14px 0 6px;
+        }
+
+        .side-list {
+            list-style: none;
+            font-size: 0.88rem;
+            color: var(--muted);
+        }
+
+        .side-list li {
+            margin-bottom: 6px;
+        }
+
+        .side-list li span.label {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #9ca3af;
+        }
+
+        .chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 4px;
+        }
+
+        .chip {
+            font-size: 0.78rem;
+            padding: 4px 8px;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(148, 163, 184, 0.5);
+        }
+
+        /* ===== Main Sections ===== */
+
+        .resume-header {
+            margin-bottom: 16px;
+        }
+
+        .resume-header-top {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 6px;
+        }
+
+        .resume-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #e5e7eb;
+        }
+
+        .resume-location {
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        .resume-summary {
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        .section-block {
+            margin-bottom: 14px;
+            padding: 12px 10px;
+            border-radius: 12px;
+            background: rgba(15, 23, 42, 0.92);
+            border: 1px solid rgba(148, 163, 184, 0.35);
+        }
+
+        .section-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #e5e7eb;
+        }
+
+        .item {
+            margin-bottom: 8px;
+        }
+
+        .item:last-child {
+            margin-bottom: 0;
+        }
+
+        .item-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 6px;
+        }
+
+        .item-title {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .item-subtitle {
+            font-size: 0.85rem;
+            color: #93c5fd;
+        }
+
+        .item-meta {
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+
+        .item-desc {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-top: 4px;
+        }
+
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 4px 12px;
+            font-size: 0.86rem;
+            color: var(--muted);
+        }
+
+        @media (min-width: 900px) {
+            .skill-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        /* Contact row bottom */
+
+        .contact-row {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 18px;
+            font-size: 0.82rem;
+            color: var(--muted);
+        }
+
+        .contact-row span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 999px;
+            background: rgba(148, 163, 184, 0.7);
+        }
+
+        a {
+            color: #93c5fd;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        footer {
+            margin-top: 16px;
+            font-size: 0.78rem;
+            color: var(--muted);
+            text-align: center;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 8px;
+            font-size: 0.82rem;
+        }
+
+        .back-link span {
+            font-size: 1.1rem;
+            line-height: 1;
+        }
+
+        /* ===== Same Buttons ===== */
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .btn {
+            padding: 10px 22px;
+            border-radius: 999px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, #2563eb, #1d4ed8);
+            color: white;
+            box-shadow: 0 12px 30px rgba(37, 99, 235, 0.6);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 40px rgba(37, 99, 235, 0.8);
+        }
+
+        /* ==== Bottom QR section (left square, responsive) ==== */
+
+        .qr-section {
+            margin-top: 18px;
+            padding: 12px 10px;
+            border-radius: 12px;
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid rgba(148, 163, 184, 0.35);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            align-items: center;
+        }
+
+        .qr-image-box {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 6px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .qr-image-box img {
+            width: 120px;
+            height: 120px;   /* square */
+            object-fit: contain;
+            display: block;
+        }
+
+        .qr-text {
+            flex: 1;
+            min-width: 180px;
+        }
+
+        .qr-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #e5e7eb;
+            margin-bottom: 4px;
+        }
+
+        .qr-text p {
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        @media (max-width: 600px) {
+            .qr-section {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .qr-image-box img {
+                width: 34vw;
+                height: 34vw;  /* keep square */
+                max-width: 140px;
+                max-height: 140px;
+            }
+        }
+
+        /* Extra small screens (mobiles) */
+        @media (max-width: 480px) {
+            .name {
+                font-size: 1.2rem;
+            }
+
+            .role {
+                font-size: 0.85rem;
+            }
+
+            .resume-header-top {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .resume-title {
+                font-size: 1.15rem;
+            }
+
+            .resume-summary {
+                font-size: 0.86rem;
+            }
+
+            .section-block {
+                padding: 10px 8px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <main class="card">
+            <div class="badge">
+                <span class="badge-dot"></span>
+                Professional Resume
+            </div>
+
+            <div class="resume-layout">
+                <!-- ===== LEFT SIDEBAR ===== -->
+                <aside class="resume-sidebar">
+                    <div class="avatar-wrapper">
+                        <!-- Square photo (replace src with your image) -->
+                        <img src="images/Logo!.png" alt="WebKaushal">
+                    </div>
+
+                    <div class="name">Kaushal Kumar</div>
+                    <div class="role">Web Developer & Designer</div>
+
+                    <p style="font-size: 0.86rem; color: var(--muted); margin-top: 4px;">
+                        Passionate about building modern, responsive and optimized web
+                        experiences using clean code and thoughtful design.
+                    </p>
+
+                    <h3 class="side-section-title">Contact</h3>
+                    <ul class="side-list">
+                        <li>
+                            <span class="label">Email</span>
+                            <a href="mailto:webkaushal2008@gmail.com">webkaushal2008@gmail.com</a>
+                        </li>
+                        <li>
+                            <span class="label">Phone</span>
+                            +91 9001038947
+                        </li>
+                        <li>
+                            <span class="label">Location</span>
+                            Bhilwara, Rajasthan, India
+                        </li>
+                        <li>
+                            <span class="label">Portfolio</span>
+                            <a href="index.html"> webkaushal.com </a>
+                        </li>
+                    </ul>
+
+                    <h3 class="side-section-title">Tech Stack</h3>
+                    <div class="chip-row">
+                        <span class="chip">HTML5</span>
+                        <span class="chip">CSS3</span>
+                        <span class="chip">JavaScript</span>
+                        <span class="chip">Bootstrap</span>
+                        <span class="chip">Tailwind CSS</span>
+                        <span class="chip">React (basic)</span>
+                    </div>
+
+                    <h3 class="side-section-title">Languages</h3>
+                    <ul class="side-list">
+                        <li>Hindi (Native)</li>
+                        <li>English (Professional)</li>
+                    </ul>
+                </aside>
+
+                <!-- ===== MAIN CONTENT ===== -->
+                <section class="resume-main">
+                    <!-- Header & Summary -->
+                    <header class="resume-header">
+                        <div class="resume-header-top">
+                            <div class="resume-title">Resume</div>
+                            <div class="resume-location">Available for Freelance / Remote Work</div>
+                        </div>
+                        <p class="resume-summary">
+                            Detail-oriented web developer focused on creating fast, accessible,
+                            and visually appealing websites. Experienced in building landing pages,
+                            multi-page business sites, and admin dashboards with modern UI effects.
+                        </p>
+                        <div class="contact-row">
+                            <span><span class="dot"></span> Experience: 1–3 Years (Customize)</span>
+                            <span><span class="dot"></span> Specialization: Frontend Development</span>
+                        </div>
+                    </header>
+
+                    <!-- Experience -->
+                    <div class="section-block">
+                        <div class="section-title">Experience</div>
+
+                        <div class="item">
+                            <div class="item-header">
+                                <div>
+                                    <div class="item-title">Freelance Web Developer</div>
+                                    <div class="item-subtitle">Self-Employed · Remote</div>
+                                </div>
+                                <div class="item-meta">2022 – Present</div>
+                            </div>
+                            <p class="item-desc">
+                                Designed and developed custom websites for small businesses,
+                                including portfolios, education websites, and service landing pages.
+                                Implemented responsive layouts, animations, and optimized performance.
+                            </p>
+                        </div>
+
+                        <div class="item">
+                            <div class="item-header">
+                                <div>
+                                    <div class="item-title">Frontend Developer</div>
+                                    <div class="item-subtitle">Self-Employed · Remote</div>
+                                </div>
+                                <div class="item-meta">2021 – 2022</div>
+                            </div>
+                            <p class="item-desc">
+                                Assisted in building dashboard components, fixing UI bugs,
+                                and writing clean, reusable HTML/CSS/JS. Collaborated with
+                                the design team to convert Figma designs into production UI.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Skills -->
+                    <div class="section-block">
+                        <div class="section-title">Skills</div>
+                        <div class="skill-grid">
+                            <span>Responsive Web Design</span>
+                            <span>Modern UI / UX</span>
+                            <span>HTML, CSS, JavaScript</span>
+                            <span>Flexbox & Grid</span>
+                            <span>Bootstrap / Tailwind</span>
+                            <span>Git & GitHub</span>
+                            <span>Basic SEO</span>
+                            <span>Figma to Code</span>
+                            <span>Debugging & Optimization</span>
+                        </div>
+                    </div>
+
+                    <!-- Education -->
+                    <div class="section-block">
+                        <div class="section-title">Education</div>
+
+                        <div class="item">
+                            <div class="item-header">
+                                <div>
+                                    <div class="item-title">Bachelor's / Senior Secondary (Customize)</div>
+                                    <div class="item-subtitle">Your College / School Name</div>
+                                </div>
+                                <div class="item-meta">Year – Year</div>
+                            </div>
+                            <p class="item-desc">
+                               ( Commerce / Computer Science )
+                                and / IT or 
+                            <a href="ourcertificates.html"> Certificates </a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Projects -->
+                    <div class="section-block">
+                        <div class="section-title">Selected Projects</div>
+
+                        <div class="item">
+                            <div class="item-header">
+                                <div>
+                                    <div class="item-title">WebKaushal – Multi-page Portfolio</div>
+                                    <div class="item-meta">HTML · CSS · JS</div>
+                                </div>
+                            </div>
+                            <p class="item-desc">
+                                Modern multi-page portfolio with animated sections, responsive
+                                layout, and custom components like loaders and advanced buttons.
+                            </p>
+                        </div>
+
+                        <div class="item">
+                            <div class="item-header">
+                                <div>
+                                    <div class="item-title">Option Trading Tool UI</div>
+                                    <div class="item-meta">Dashboard · Charts</div>
+                                </div>
+                            </div>
+                            <p class="item-desc">
+                                Built a clean dashboard interface for options data visualization,
+                                including tables, custom buttons, and chart sections for IV
+                                difference analysis (front-end layout).
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Extra -->
+                    <div class="section-block">
+                        <div class="section-title">Achievements & Interests</div>
+                        <ul style="padding-left: 18px; font-size: 0.86rem; color: var(--muted);">
+                            <li>Built and deployed multiple personal and client websites.</li>
+                            <li>Continuously learning advanced JavaScript and frontend frameworks.</li>
+                            <li>Interested in UI animation, performance optimization, and trading tools UI.</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+
+            <footer>
+                <p>Last updated: 01 January 2025 </p>
+                <div class="buttons">
+                    <a href="index.html" class="btn btn-primary"> Back to Home</a>
+                </div>
+            </footer>
+        </main>
+    </div>
+        <script>
+            document.addEventListener
+            ("contextmenu", function(e)
+            {
+                e.preventDefault()
+            },false)
+        </script>
+</body>
+</html>

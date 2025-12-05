@@ -522,38 +522,47 @@
     </div>
 
     <script>
-        // Small JS fallback: if 'upi:' link is not handled, show a small alert and copy UPI ID to clipboard
-        (function () {
-            const quickBtn = document.getElementById('quickPayBtn');
+    (function () {
+        const quickBtn = document.getElementById('quickPayBtn');
+        if (!quickBtn) return;
 
-            if (!quickBtn) return;
+        // Your UPI ID
+        const upiId = 'chunnilalbairwa22216-4@okhdfcbank';
+        const payeeName = 'Chunni Lal Bairwa';
 
-            // Replace with your actual UPI id string for copy fallback:
-            const upiString = 'chunnilalbairwa22216-4@okhdfcbank'; // <-- change this to your real UPI ID
+        // Universal UPI deep link
+        const upiUrl =
+            `upi://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(payeeName)}&cu=INR`;
 
-            quickBtn.addEventListener('click', function (e) {
-                // On non-mobile desktop browsers, 'upi:' protocol may not be supported.
-                // Let the link try to open the handler; also set a short timer to detect if the protocol wasn't handled.
-                // We won't block the default; instead provide a helpful fallback after a short delay on non-mobile.
-                if (navigator.userAgent.match(/Mobi|Android|iPhone|iPad/i)) {
-                    // mobile — let it attempt to open the UPI app
-                    return true;
-                }
+        quickBtn.addEventListener('click', function (e) {
 
-                // On desktop, prevent navigation and provide a copy fallback
-                e.preventDefault();
-                // copy to clipboard
-                if (navigator.clipboard) {
-                    navigator.clipboard.writeText(upiString).then(() => {
-                        alert('UPI ID copied to clipboard: ' + upiString + '\nUse a UPI-enabled app on your phone to pay.');
-                    }).catch(() => {
-                        alert('Copy failed. UPI ID: ' + upiString);
+            // MOBILE → Open UPI App
+            if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                window.location.href = upiUrl;
+                return;
+            }
+
+            // DESKTOP → Copy UPI ID
+            e.preventDefault();
+
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(upiId)
+                    .then(() => {
+                        alert(
+                            "UPI ID copied:\n" +
+                            upiId +
+                            "\n\nUse any UPI app on your mobile to complete the payment."
+                        );
+                    })
+                    .catch(() => {
+                        alert("Copy failed.\nYour UPI ID: " + upiId);
                     });
-                } else {
-                    alert('UPI ID: ' + upiString);
-                }
-            }, false);
-        })();
+            } else {
+                alert("Your UPI ID: " + upiId);
+            }
+        });
+
+    })();
     </script>
 
     <script>

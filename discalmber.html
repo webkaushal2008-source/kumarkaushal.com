@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Disclaimer | WebKaushal</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="icon" href="images/Logo!.png">
+
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-soft: rgba(37, 99, 235, 0.08);
+            --bg: #0f172a;
+            --bg-soft: #020617;
+            --card: rgba(15, 23, 42, 0.95);
+            --text: #e5e7eb;
+            --muted: #9ca3af;
+            --border: rgba(148, 163, 184, 0.2);
+            --accent: #22c55e;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.55);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: radial-gradient(circle at top, #1d4ed8 0, #f9fafb 50%, #1d4ed8 100%);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            padding: 40px 16px;
+        }
+
+        .wrapper {
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .card {
+            background: linear-gradient(135deg, rgba(15,23,42,0.98), rgba(15,23,42,0.96));
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--border);
+            padding: 32px 24px 28px;
+            backdrop-filter: blur(26px);
+        }
+
+        /* Tablet & down – better responsive spacing */
+        @media (max-width: 768px) {
+            body {
+                padding: 24px 12px;
+            }
+
+            .card {
+                padding: 24px 18px 20px;
+            }
+        }
+
+        /* Desktop extra padding */
+        @media (min-width: 768px) {
+            .card {
+                padding: 40px 40px 32px;
+            }
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            border-radius: 999px;
+            background: rgba(37, 99, 235, 0.12);
+            border: 1px solid rgba(37, 99, 235, 0.35);
+            font-size: 12px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #bfdbfe;
+            margin-bottom: 14px;
+        }
+
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+            background: var(--accent);
+            box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
+        }
+
+        header {
+            margin-bottom: 24px;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #f9fafb;
+        }
+
+        @media (min-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        .subtitle {
+            font-size: 0.95rem;
+            color: var(--muted);
+            max-width: 700px;
+        }
+
+        .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 22px;
+            margin-top: 18px;
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        .meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .meta span::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-radius: 999px;
+            background: rgba(148, 163, 184, 0.7);
+        }
+
+        .content {
+            margin-top: 26px;
+            border-top: 1px solid var(--border);
+            padding-top: 24px;
+        }
+
+        section.disclaimer-block {
+            margin-bottom: 24px;
+            padding: 18px 16px;
+            border-radius: var(--radius-lg);
+            background: radial-gradient(circle at top left,
+                    rgba(37, 99, 235, 0.16),
+                    rgba(15, 23, 42, 1) 50%);
+            border: 1px solid rgba(37, 99, 235, 0.25);
+        }
+
+        section.disclaimer-block:nth-child(even) {
+            background: radial-gradient(circle at top right,
+                    rgba(34, 197, 94, 0.14),
+                    rgba(15, 23, 42, 1) 55%);
+            border-color: rgba(34, 197, 94, 0.25);
+        }
+
+        @media (min-width: 768px) {
+            section.disclaimer-block {
+                padding: 20px 22px;
+            }
+        }
+
+        .disclaimer-block h2 {
+            font-size: 1.05rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #e5e7eb;
+        }
+
+        .disclaimer-block p {
+            font-size: 0.9rem;
+            color: var(--muted);
+            margin-bottom: 10px;
+        }
+
+        .disclaimer-block ul {
+            padding-left: 18px;
+            margin-top: 6px;
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        .disclaimer-block ul li {
+            margin-bottom: 6px;
+        }
+
+        .highlight {
+            background: rgba(37, 99, 235, 0.12);
+            display: inline-flex;
+            padding: 2px 6px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+        }
+
+        .contact-box {
+            margin-top: 10px;
+            padding: 14px 16px;
+            border-radius: 14px;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px dashed rgba(148, 163, 184, 0.7);
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        .contact-box strong {
+            color: #e5e7eb;
+        }
+
+        a {
+            color: #93c5fd;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 12px;
+        }
+
+        .btn {
+            padding: 10px 22px;
+            border-radius: 999px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, #2563eb, #1d4ed8);
+            color: white;
+            box-shadow: 0 12px 30px rgba(37, 99, 235, 0.6);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 40px rgba(37, 99, 235, 0.8);
+        }
+
+        .steps-list li::marker {
+            color: #60a5fa;
+        }
+
+        footer {
+            margin-top: 18px;
+            font-size: 0.8rem;
+            color: var(--muted);
+            text-align: center;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 10px;
+            font-size: 0.85rem;
+        }
+
+        .back-link span {
+            font-size: 1.1rem;
+            line-height: 1;
+        }
+
+        /* Extra small screens (phones) */
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            .subtitle {
+                font-size: 0.9rem;
+            }
+
+            section.disclaimer-block {
+                padding: 16px 12px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <main class="card">
+            <div class="badge">
+                <span class="badge-dot"></span>
+                Legal Notice & Disclaimer
+            </div>
+
+            <header>
+                <h1>Website Disclaimer</h1>
+                <p class="subtitle">
+                    This Disclaimer applies to the website operated under the name
+                    <span class="highlight">WebKaushal</span> (the "Website") and to any content,
+                    services, or information made available to visitors and clients.
+                </p>
+                <div class="meta">
+                    <span>Effective Date: 01 January 2025</span>
+                    <span>Last Updated: 01 January 2025</span>
+                </div>
+            </header>
+
+            <div class="content">
+
+                <!-- 1. General Information -->
+                <section class="disclaimer-block" id="general">
+                    <h2>1. General Information</h2>
+                    <p>
+                        The information provided on this Website is for general informational and
+                        educational purposes only. While we strive to keep the content accurate and
+                        up to date, <span class="highlight">WebKaushal</span> makes no guarantees of
+                        any kind, express or implied, about the completeness, accuracy, reliability,
+                        suitability, or availability of any information, products, services, or
+                        related graphics contained on the Website.
+                    </p>
+                    <p>
+                        Any reliance you place on such information is strictly at your own risk.
+                    </p>
+                </section>
+
+                <!-- 2. No Professional Advice -->
+                <section class="disclaimer-block" id="advice">
+                    <h2>2. No Professional Advice</h2>
+                    <p>
+                        Nothing on this Website constitutes or is intended to constitute:
+                    </p>
+                    <ul>
+                        <li>Legal advice</li>
+                        <li>Financial or investment advice</li>
+                        <li>Medical, health, or any other professional advice</li>
+                    </ul>
+                    <p>
+                        You should always consult a qualified professional for advice tailored to
+                        your specific situation before making any decisions based on the information
+                        provided on this Website or on websites designed by <span class="highlight">WebKaushal</span>
+                        for its clients.
+                    </p>
+                </section>
+
+                <!-- 3. Client Websites & Content -->
+                <section class="disclaimer-block" id="client-sites">
+                    <h2>3. Client Websites and Client-Provided Content</h2>
+                    <p>
+                        <span class="highlight">WebKaushal</span> may design, develop, or maintain
+                        websites, pages, or digital content for its clients ("Client Websites").
+                        Unless explicitly stated, <span class="highlight">WebKaushal</span> is not
+                        responsible for:
+                    </p>
+                    <ul>
+                        <li>The accuracy, legality, or completeness of the content provided by clients.</li>
+                        <li>Any statements, claims, offers, or representations made by clients on their websites.</li>
+                        <li>Any products or services sold, advertised, or promoted on Client Websites.</li>
+                    </ul>
+                    <p>
+                        All responsibility and liability related to Client Website content rests with
+                        the respective client or website owner.
+                    </p>
+                </section>
+
+                <!-- 4. External Links -->
+                <section class="disclaimer-block" id="links">
+                    <h2>4. External Links</h2>
+                    <p>
+                        This Website and Client Websites may contain links to external websites or
+                        third-party resources that are not controlled or maintained by
+                        <span class="highlight">WebKaushal</span>.
+                    </p>
+                    <p>
+                        We do not endorse or assume responsibility for the content, privacy policies,
+                        or practices of any third-party websites. Visiting and using third-party
+                        websites is entirely at your own risk.
+                    </p>
+                </section>
+
+                <!-- 5. Technical Issues -->
+                <section class="disclaimer-block" id="technical">
+                    <h2>5. Availability and Technical Issues</h2>
+                    <p>
+                        We make reasonable efforts to keep the Website running smoothly and
+                        accessible. However, <span class="highlight">WebKaushal</span> takes no
+                        responsibility for, and will not be liable for, the Website being temporarily
+                        unavailable due to technical issues beyond our control, maintenance, updates,
+                        hosting problems, or other reasons.
+                    </p>
+                    <p>
+                        We also do not guarantee that the Website or any Client Website will be free
+                        from viruses, malware, or other harmful components. Users are responsible for
+                        using appropriate security and antivirus software.
+                    </p>
+                </section>
+
+                <!-- 6. Limitation of Liability -->
+                <section class="disclaimer-block" id="liability">
+                    <h2>6. Limitation of Liability</h2>
+                    <p>
+                        To the fullest extent permitted by law, in no event shall
+                        <span class="highlight">WebKaushal</span>, its owners, employees, partners,
+                        or affiliates be liable for any loss or damage, including without limitation
+                        indirect or consequential loss or damage, or any loss or damage whatsoever
+                        arising from:
+                    </p>
+                    <ul>
+                        <li>Your use of or inability to use the Website or any Client Website.</li>
+                        <li>Reliance on any information provided on this Website.</li>
+                        <li>Errors, omissions, interruptions, defects, delays, computer viruses, or failures.</li>
+                        <li>Any actions or decisions made by you based on the content or services.</li>
+                    </ul>
+                </section>
+
+                <!-- 7. Testimonials & Results -->
+                <section class="disclaimer-block" id="testimonials">
+                    <h2>7. Testimonials and Client Results</h2>
+                    <p>
+                        Any testimonials, reviews, case studies, or examples of results shown on this
+                        Website or Client Websites are based on individual experiences. They are not
+                        intended to guarantee that current or future clients will achieve the same or
+                        similar results.
+                    </p>
+                    <p>
+                        Your results may vary depending on various factors, including but not limited
+                        to your industry, market conditions, strategy, and level of effort.
+                    </p>
+                </section>
+
+                <!-- 8. Changes to This Disclaimer -->
+                <section class="disclaimer-block" id="changes">
+                    <h2>8. Changes to This Disclaimer</h2>
+                    <p>
+                        <span class="highlight">WebKaushal</span> reserves the right to modify,
+                        update, or replace this Disclaimer at any time, without prior notice. Any
+                        changes will be posted on this page with an updated "Last Updated" date.
+                    </p>
+                    <p>
+                        Your continued use of the Website after changes are posted will be deemed as
+                        your acceptance of those changes.
+                    </p>
+                </section>
+
+                <!-- 9. Contact -->
+                <section class="disclaimer-block" id="contact">
+                    <h2>9. Contact</h2>
+                    <p>
+                        If you have any questions about this Disclaimer, or if you are a client who
+                        wishes to customize this Disclaimer for your own website, please contact us at:
+                    </p>
+
+                    <div class="contact-box">
+                        <p><strong>WebKaushal</strong></p>
+                        <p>Email: <a href="mailto:webkaushal2008@gmail.com">webkaushal2008@gmail.com</a></p>
+                    </div>
+                </section>
+            </div>
+
+            <footer>
+                <p>
+                    This disclaimer template is provided for general informational purposes only and
+                    should not be considered legal advice. For specific legal guidance, please consult
+                    a qualified legal professional.
+                </p>
+                <div class="buttons">
+                    <a href="index.html" class="btn btn-primary">Go to Home</a>
+                </div>
+            </footer>
+        </main>
+    </div>
+</div>
+        <script>
+            document.addEventListener
+            ("contextmenu", function(e)
+            {
+                e.preventDefault()
+            },false)
+        </script>
+</body>
+</html>

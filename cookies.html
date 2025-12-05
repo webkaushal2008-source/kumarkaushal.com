@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cookies Policy | WebKaushal</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="icon" href="images/Logo!.png">
+
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-soft: rgba(37, 99, 235, 0.08);
+            --bg: #0f172a;
+            --bg-soft: #020617;
+            --card: rgba(15, 23, 42, 0.95);
+            --text: #e5e7eb;
+            --muted: #9ca3af;
+            --border: rgba(148, 163, 184, 0.2);
+            --accent: #22c55e;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.55);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: radial-gradient(circle at top, #1d4ed8 0, #f9fafb 50%, #1d4ed8 100%);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            padding: 40px 16px;
+        }
+
+        .wrapper {
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .card {
+            background: linear-gradient(135deg, rgba(15,23,42,0.98), rgba(15,23,42,0.96));
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--border);
+            padding: 32px 24px 28px;
+            backdrop-filter: blur(26px);
+        }
+
+        /* Tablet & Desktop – thoda zyada padding */
+        @media (min-width: 768px) {
+            .card {
+                padding: 40px 40px 32px;
+            }
+        }
+
+        /* Mobile – body & card padding kam */
+        @media (max-width: 768px) {
+            body {
+                padding: 24px 12px;
+            }
+
+            .card {
+                padding: 24px 18px 20px;
+            }
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            border-radius: 999px;
+            background: rgba(37, 99, 235, 0.12);
+            border: 1px solid rgba(37, 99, 235, 0.35);
+            font-size: 12px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #bfdbfe;
+            margin-bottom: 14px;
+        }
+
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+            background: var(--accent);
+            box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
+        }
+
+        header {
+            margin-bottom: 24px;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #f9fafb;
+        }
+
+        @media (min-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        .subtitle {
+            font-size: 0.95rem;
+            color: var(--muted);
+            max-width: 700px;
+        }
+
+        .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 22px;
+            margin-top: 18px;
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        .meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .meta span::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-radius: 999px;
+            background: rgba(148, 163, 184, 0.7);
+        }
+
+        .content {
+            margin-top: 26px;
+            border-top: 1px solid var(--border);
+            padding-top: 24px;
+        }
+
+        section.policy-block {
+            margin-bottom: 24px;
+            padding: 18px 16px;
+            border-radius: var(--radius-lg);
+            background: radial-gradient(circle at top left,
+                    rgba(37, 99, 235, 0.16),
+                    rgba(15, 23, 42, 1) 50%);
+            border: 1px solid rgba(37, 99, 235, 0.25);
+        }
+
+        section.policy-block:nth-child(even) {
+            background: radial-gradient(circle at top right,
+                    rgba(34, 197, 94, 0.14),
+                    rgba(15, 23, 42, 1) 55%);
+            border-color: rgba(34, 197, 94, 0.25);
+        }
+
+        @media (min-width: 768px) {
+            section.policy-block {
+                padding: 20px 22px;
+            }
+        }
+
+        .policy-block h2 {
+            font-size: 1.05rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #e5e7eb;
+        }
+
+        .policy-block p {
+            font-size: 0.9rem;
+            color: var(--muted);
+            margin-bottom: 10px;
+        }
+
+        .policy-block ul {
+            padding-left: 18px;
+            margin-top: 6px;
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        .policy-block ul li {
+            margin-bottom: 6px;
+        }
+
+        .highlight {
+            background: rgba(37, 99, 235, 0.12);
+            display: inline-flex;
+            padding: 2px 6px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+        }
+
+        .contact-box {
+            margin-top: 10px;
+            padding: 14px 16px;
+            border-radius: 14px;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px dashed rgba(148, 163, 184, 0.7);
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        .contact-box strong {
+            color: #e5e7eb;
+        }
+
+        a {
+            color: #93c5fd;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+        
+        .buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 12px;
+        }
+
+        .btn {
+            padding: 10px 22px;
+            border-radius: 999px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, #2563eb, #1d4ed8);
+            color: white;
+            box-shadow: 0 12px 30px rgba(37, 99, 235, 0.6);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 40px rgba(37, 99, 235, 0.8);
+        }
+
+        footer {
+            margin-top: 18px;
+            font-size: 0.8rem;
+            color: var(--muted);
+            text-align: center;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 10px;
+            font-size: 0.85rem;
+        }
+
+        .back-link span {
+            font-size: 1.1rem;
+            line-height: 1;
+        }
+
+        /* Extra Small Screens (<= 480px) */
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.6rem;
+            }
+
+            .subtitle {
+                font-size: 0.9rem;
+            }
+
+            section.policy-block {
+                padding: 16px 12px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <main class="card">
+            <div class="badge">
+                <span class="badge-dot"></span>
+                Cookies & Tracking
+            </div>
+
+            <header>
+                <h1>Cookie Policy</h1>
+                <p class="subtitle">
+                    This Cookie Policy explains how <span class="highlight">WebKaushal</span> ("we",
+                    "us", or "our") uses cookies and similar technologies when you visit or use our website
+                    and services.
+                </p>
+                <div class="meta">
+                    <span>Effective Date: 01 January 2025</span>
+                    <span>Last Updated: 01 January 2025</span>
+                </div>
+            </header>
+
+            <div class="content">
+
+                <!-- 1. What Are Cookies -->
+                <section class="policy-block" id="what-are-cookies">
+                    <h2>1. What Are Cookies?</h2>
+                    <p>
+                        Cookies are small text files that are stored on your device (computer, tablet, or
+                        mobile) when you visit a website. They help the website recognize your device and
+                        remember certain information about your visit, such as your preferences or actions.
+                    </p>
+                    <p>
+                        Cookies can be "session cookies" (which are deleted when you close your browser)
+                        or "persistent cookies" (which remain on your device for a set period or until
+                        you delete them).
+                    </p>
+                </section>
+
+                <!-- 2. Types of Cookies We Use -->
+                <section class="policy-block" id="types-of-cookies">
+                    <h2>2. Types of Cookies We Use</h2>
+                    <p>
+                        We may use the following types of cookies on our website:
+                    </p>
+                    <ul>
+                        <li><strong>Strictly Necessary Cookies:</strong> These cookies are essential for the
+                            operation of the website and enable core functionality such as security, network
+                            management, and accessibility. You cannot disable these cookies through our
+                            cookie settings.</li>
+                        <li><strong>Performance / Analytics Cookies:</strong> These cookies help us understand
+                            how visitors use our website (e.g., which pages are visited most often, how users
+                            navigate). The information is aggregated and used to improve our website and
+                            services.</li>
+                        <li><strong>Functionality Cookies:</strong> These cookies allow us to remember your
+                            preferences, such as language settings or login details, to provide a more
+                            personalized experience.</li>
+                        <li><strong>Advertising / Targeting Cookies (if applicable):</strong> These cookies
+                            may be used to deliver relevant advertisements based on your interests, or to limit
+                            how often you see an ad. They may also help measure the effectiveness of ad campaigns.</li>
+                    </ul>
+                </section>
+
+                <!-- 3. How We Use Cookies -->
+                <section class="policy-block" id="how-we-use-cookies">
+                    <h2>3. How We Use Cookies</h2>
+                    <p>
+                        We use cookies and similar technologies to:
+                    </p>
+                    <ul>
+                        <li>Keep our website secure and functioning properly.</li>
+                        <li>Remember your settings and preferences between visits.</li>
+                        <li>Analyze traffic and usage patterns to improve the user experience.</li>
+                        <li>Understand the performance of our content, pages, and features.</li>
+                        <li>Provide relevant marketing or promotional content (if we use advertising cookies).</li>
+                    </ul>
+                </section>
+
+                <!-- 4. Third-Party Cookies -->
+                <section class="policy-block" id="third-party-cookies">
+                    <h2>4. Third-Party Cookies</h2>
+                    <p>
+                        In addition to our own cookies, we may also use cookies provided by trusted third
+                        parties, such as:
+                    </p>
+                    <ul>
+                        <li><strong>Analytics providers:</strong> to help us measure and analyze how our
+                            website is used (for example, tools like Google Analytics).</li>
+                        <li><strong>Advertising partners:</strong> to deliver more relevant ads or track
+                            the performance of campaigns.</li>
+                        <li><strong>Embedded content providers:</strong> for content such as videos, maps,
+                            or social media widgets that may set their own cookies.</li>
+                    </ul>
+                    <p>
+                        These third parties have their own privacy and cookie policies, which we recommend
+                        reviewing to understand how they handle your information.
+                    </p>
+                </section>
+
+                <!-- 5. Managing Cookies -->
+                <section class="policy-block" id="managing-cookies">
+                    <h2>5. Managing and Controlling Cookies</h2>
+                    <p>
+                        You have the right to decide whether to accept or reject cookies. You can manage
+                        your cookie preferences in the following ways:
+                    </p>
+                    <ul>
+                        <li><strong>Browser Settings:</strong> Most web browsers allow you to control cookies
+                            through their settings, including blocking or deleting cookies. Please refer to your
+                            browser’s help section for more information.</li>
+                        <li><strong>Third-Party Opt-Out Tools:</strong> Some analytics or advertising providers
+                            offer opt-out mechanisms for their cookies.</li>
+                        <li><strong>Device Settings:</strong> On mobile devices, you may control tracking through
+                            your device settings.</li>
+                    </ul>
+                    <p>
+                        Please note that if you disable or block certain cookies, some features of our website
+                        may not function correctly, and your overall experience may be affected.
+                    </p>
+                </section>
+
+                <!-- 6. Do Not Track Signals -->
+                <section class="policy-block" id="do-not-track">
+                    <h2>6. Do Not Track (DNT) Signals</h2>
+                    <p>
+                        Some browsers include a "Do Not Track" feature that signals to websites that you do
+                        not want to be tracked. At this time, there is no universally agreed standard on how
+                        to interpret DNT signals, and our website may not respond to them. We will review
+                        and update this section if such a standard is adopted.
+                    </p>
+                </section>
+
+                <!-- 7. Data Collected Through Cookies -->
+                <section class="policy-block" id="data-collected">
+                    <h2>7. Data Collected Through Cookies</h2>
+                    <p>
+                        Information collected through cookies may include:
+                    </p>
+                    <ul>
+                        <li>Device information (browser type, operating system, screen resolution).</li>
+                        <li>Usage data (pages visited, time spent on pages, clicks, referring URLs).</li>
+                        <li>Approximate location data, based on your IP address.</li>
+                    </ul>
+                    <p>
+                        Where this information is considered personal data, we process it in accordance with
+                        our <a href="privacypolicy.html">Privacy Policy</a>.
+                    </p>
+                </section>
+
+                <!-- 8. Changes to This Cookie Policy -->
+                <section class="policy-block" id="changes">
+                    <h2>8. Changes to This Cookie Policy</h2>
+                    <p>
+                        We may update this Cookie Policy from time to time to reflect changes in our use of
+                        cookies, technology, or legal requirements.
+                    </p>
+                    <p>
+                        When we make changes, we will update the "Last Updated" date at the top of this page.
+                        We encourage you to review this page periodically to stay informed about our use of cookies.
+                    </p>
+                </section>
+
+                <!-- 9. Contact Us -->
+                <section class="policy-block" id="contact">
+                    <h2>9. Contact Us</h2>
+                    <p>
+                        If you have questions, concerns, or requests regarding this Privacy Policy or your data,
+                        please reach out to us using the details below:
+                    </p>
+
+                    <div class="contact-box">
+                        <p><strong>WebKaushal</strong></p>
+                        <p>Email: <a href="https://mail.google.com/mail/u/1/#inbox?compose=new">webkaushal2008@gmail.com</a></p>
+                    </div>
+                </section>
+            </div>
+
+            <footer>
+                <p>
+                    This template is for general informational purposes only and does not constitute
+                    legal advice. Please consult a legal professional to ensure compliance with
+                    applicable laws.
+                </p>
+                <div class="buttons">
+                    <a href="index.html" class="btn btn-primary"> Back to Home</a>
+                </div>
+            </footer>
+        </main>
+    </div>
+</div>
+        <script>
+            document.addEventListener
+            ("contextmenu", function(e)
+            {
+                e.preventDefault()
+            },false)
+        </script>
+</body>
+</html>

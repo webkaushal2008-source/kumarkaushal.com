@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment | By WebKaushal</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="icon" href="images/Logo!.png">
+
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-soft: rgba(37, 99, 235, 0.08);
+            --bg: #0f172a;
+            --bg-soft: #020617;
+            --card: rgba(15, 23, 42, 0.95);
+            --text: #e5e7eb;
+            --muted: #9ca3af;
+            --border: rgba(148, 163, 184, 0.2);
+            --accent: #22c55e;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.55);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: radial-gradient(circle at top, #1d4ed8 0, #f9fafb 50%, #1d4ed8 100%);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            padding: 40px 16px;
+        }
+
+        .wrapper {
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .card {
+            background: linear-gradient(135deg, rgba(15,23,42,0.98), rgba(15,23,42,0.96));
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--border);
+            padding: 32px 24px 28px;
+            backdrop-filter: blur(26px);
+        }
+
+        /* ---- Tablet & Down (Better Mobile Padding) ---- */
+        @media (max-width: 768px) {
+            body {
+                padding: 24px 12px;
+            }
+
+            .card {
+                padding: 24px 18px 20px;
+            }
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            border-radius: 999px;
+            background: rgba(37, 99, 235, 0.12);
+            border: 1px solid rgba(37, 99, 235, 0.35);
+            font-size: 12px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #bfdbfe;
+            margin-bottom: 14px;
+        }
+
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+            background: var(--accent);
+            box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
+        }
+
+        header {
+            margin-bottom: 24px;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #f9fafb;
+        }
+
+        @media (min-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        .subtitle {
+            font-size: 0.95rem;
+            color: var(--muted);
+            max-width: 700px;
+        }
+
+        .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 22px;
+            margin-top: 18px;
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        .meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .meta span::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-radius: 999px;
+            background: rgba(148, 163, 184, 0.7);
+        }
+
+        .content {
+            margin-top: 26px;
+            border-top: 1px solid var(--border);
+            padding-top: 24px;
+        }
+
+        section.block {
+            margin-bottom: 24px;
+            padding: 18px 16px;
+            border-radius: var(--radius-lg);
+            background: radial-gradient(circle at top left,
+                    rgba(37, 99, 235, 0.16),
+                    rgba(15, 23, 42, 1) 50%);
+            border: 1px solid rgba(37, 99, 235, 0.25);
+        }
+
+        section.block:nth-child(even) {
+            background: radial-gradient(circle at top right,
+                    rgba(34, 197, 94, 0.14),
+                    rgba(15, 23, 42, 1) 55%);
+            border-color: rgba(34, 197, 94, 0.25);
+        }
+
+        @media (min-width: 768px) {
+            section.block {
+                padding: 20px 22px;
+            }
+        }
+
+        .block h2 {
+            font-size: 1.05rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #e5e7eb;
+        }
+
+        .block p {
+            font-size: 0.9rem;
+            color: var(--muted);
+            margin-bottom: 10px;
+        }
+
+        .block ul {
+            padding-left: 18px;
+            margin-top: 6px;
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        .block ul li {
+            margin-bottom: 6px;
+        }
+
+        .highlight {
+            background: rgba(37, 99, 235, 0.12);
+            display: inline-flex;
+            padding: 2px 6px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+        }
+
+        .payment-layout {
+            display: grid;
+            gap: 18px;
+        }
+
+        @media (min-width: 768px) {
+            .payment-layout {
+                grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+                align-items: flex-start;
+            }
+        }
+
+        .qr-card {
+            background: rgba(15, 23, 42, 0.96);
+            border-radius: 18px;
+            padding: 18px 16px 20px;
+            border: 1px solid rgba(148, 163, 184, 0.5);
+            text-align: center;
+        }
+
+        .qr-header {
+            font-size: 0.95rem;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        .qr-sub {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-bottom: 14px;
+        }
+
+        .qr-box {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 10px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 12px;
+            max-width: 100%;
+        }
+
+        .qr-box img {
+            display: block;
+            width: 220px;
+            height: 220px;
+            object-fit: contain;
+        }
+
+        /* Make QR fully responsive on small screens */
+        @media (max-width: 768px) {
+            .qr-box img {
+                width: 60vw;
+                max-width: 220px;
+                height: auto;
+            }
+        }
+
+        .amount-tag {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 4px;
+            padding: 6px 14px;
+            border-radius: 999px;
+            background: rgba(34, 197, 94, 0.12);
+            border: 1px solid rgba(34, 197, 94, 0.4);
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+
+        .amount-tag strong {
+            font-size: 1.05rem;
+            color: #bbf7d0;
+        }
+
+        .receiver {
+            font-size: 0.9rem;
+            color: var(--muted);
+            margin-bottom: 4px;
+        }
+
+        .upi-id {
+            font-size: 0.9rem;
+            color: #93c5fd;
+            margin-bottom: 10px;
+            word-break: break-all;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .btn {
+            padding: 10px 22px;
+            border-radius: 999px;
+            font-weight: 500px;
+            text-decoration: none;
+            transition: 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, #2563eb, #1d4ed8);
+            color: white;
+            box-shadow: 0 12px 30px rgba(37, 99, 235, 0.6);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 40px rgba(37, 99, 235, 0.8);
+        }
+
+        .steps-list li::marker {
+            color: #60a5fa;
+        }
+
+        .note-box {
+            margin-top: 10px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            border: 1px dashed rgba(248, 250, 252, 0.4);
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        .note-box strong {
+            color: #e5e7eb;
+        }
+
+        a {
+            color: #93c5fd;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        footer {
+            margin-top: 18px;
+            font-size: 0.8rem;
+            color: var(--muted);
+            text-align: center;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 10px;
+            font-size: 0.85rem;
+        }
+
+        .back-link span {
+            font-size: 1.1rem;
+            line-height: 1;
+        }
+
+        /* ---- Extra Small Screens (<= 480px) ---- */
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            .subtitle {
+                font-size: 0.9rem;
+            }
+
+            section.block {
+                padding: 16px 12px;
+            }
+
+            .payment-layout {
+                gap: 14px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* ========= QUICK PAY button (mobile/tablet only) =========
+           - hidden on larger screens
+           - appears below QR card when viewport <= 768px
+        */
+        .quick-pay {
+            display: none;          /* hide by default (desktop) */
+            margin-top: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .quick-pay {
+                display: inline-flex;   /* show on tablet/phone */
+                width: 100%;
+                justify-content: center;
+            }
+
+            /* make it visually align with other mobile rules */
+            .quick-pay .btn {
+                width: 100%;
+                padding: 12px 16px;
+                font-size: 1rem;
+                border-radius: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <main class="card">
+            <div class="badge">
+                <span class="badge-dot"></span>
+                Secure Online Payment
+            </div>
+
+            <header>
+                <h1>Website Payment</h1>
+                <p class="subtitle">
+                    Complete your payment to <span class="highlight">WebKaushal</span> by scanning
+                    the QR code below using any UPI-enabled app.
+                </p>
+                <div class="meta">
+                    <span>Mode: UPI / QR Code</span>
+                    <span>Secure &amp; Instant</span>
+                </div>
+            </header>
+
+            <div class="content">
+                <section class="block">
+                    <div class="payment-layout">
+                        <!-- Left: QR + main payment info -->
+                        <div class="qr-card">
+                            <div class="qr-header">Scan QR to Pay</div>
+                            <div class="qr-sub">Use PhonePe, Google Pay, Paytm, BHIM or any UPI app</div>
+
+                            <div class="qr-box">
+                                <!-- Replace this image with your real QR code -->
+                                <img src="images/or.png" alt="UPI Payment QR Code">
+                            </div>
+
+                            <div class="receiver">Paying to:</div>
+                            <!-- Change receiver name & UPI ID here -->
+                            <div class="receiver"><strong>Chunni Lal Bairwa</strong></div>
+                            <div class="upi-id">Account No: 10220100009501</div>
+                            <div class="upi-id">IFSC CODE: BARB0RUPAHE </div>
+
+                            <!-- QUICK PAY BUTTON (only visible on tablet/phone) -->
+                            <!-- Replace "yourupi@bank" and params with a real UPI ID if you want deep-linking -->
+                            <div class="quick-pay" aria-hidden="false">
+                                <a id="quickPayBtn" class="btn btn-primary"
+                                   href="upi://pay?pa=yourupi@bank&pn=Chunni%20Lal%20Bairwa&cu=INR"
+                                   title="Quick Pay (opens UPI app)">
+                                    Quick Pay
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Right: Instructions & notes -->
+                        <div>
+                            <h2 style="font-size:1.05rem; margin-bottom:8px;">How to Pay</h2>
+                            <ul class="steps-list">
+                                <li>Open your <strong>Preferred UPI Payment App</strong> (PhonePe, GPay, Paytm, BHIM, etc.).</li>
+                                <li>Select the option to <strong>Scan QR</strong>.</li>
+                                <li>Point your <strong>Camera</strong> at the QR code shown on this page.</li>
+                                <li>Verify the <strong>Receiver Name</strong> and amount.</li>
+                                <li>Complete the payment using your <strong>UPI PIN</strong>.</li>
+                            </ul>
+
+                            <div class="note-box">
+                                <p><strong>Important:</strong></p>
+                                <ul>
+                                    <li>After successful payment, take a screenshot or note the transaction ID.</li>
+                                    <li>If this payment is for a course / subscription / service, please share the transaction ID with our support team on WhatsApp or email.</li>
+                                    <li>Do not share your UPI PIN or OTP with anyone.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="block">
+                    <h2>Payment Support</h2>
+                    <p>
+                        If the QR code is not visible, not scanning, or you are charged but do not see
+                        confirmation on our website, please contact us with your <strong>transaction ID</strong>
+                        and registered details.
+                    </p>
+                    <p>
+                        <p>Email: <a href="mailto:webkaushal2008@gmail.com">webkaushal2008@gmail.com</a></p>
+                        <p>Phone: <a href="tel:9001038947">+91 9001038947</a></p>
+                        <p>WhatsApp: <a href="whatsapp://send?phone=919001038947&text=Hello%2C%20Webkaushal%21">
+                            9001038947
+                        </a></p>
+                    </p>
+                </section>
+            </div>
+
+
+            <footer>
+                <p>Payments are processed securely via UPI. By proceeding, you agree to our 
+                <a href="paymentpolicy.html"><span class="highlight">Payment Policy</span></a> and Terms.</p>
+                <div class="buttons">
+                    <a href="index.html" class="btn btn-primary"> Back to Home</a>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        // Small JS fallback: if 'upi:' link is not handled, show a small alert and copy UPI ID to clipboard
+        (function () {
+            const quickBtn = document.getElementById('quickPayBtn');
+
+            if (!quickBtn) return;
+
+            // Replace with your actual UPI id string for copy fallback:
+            const upiString = 'chunnilalbairwa22216-4@okhdfcbank'; // <-- change this to your real UPI ID
+
+            quickBtn.addEventListener('click', function (e) {
+                // On non-mobile desktop browsers, 'upi:' protocol may not be supported.
+                // Let the link try to open the handler; also set a short timer to detect if the protocol wasn't handled.
+                // We won't block the default; instead provide a helpful fallback after a short delay on non-mobile.
+                if (navigator.userAgent.match(/Mobi|Android|iPhone|iPad/i)) {
+                    // mobile — let it attempt to open the UPI app
+                    return true;
+                }
+
+                // On desktop, prevent navigation and provide a copy fallback
+                e.preventDefault();
+                // copy to clipboard
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText(upiString).then(() => {
+                        alert('UPI ID copied to clipboard: ' + upiString + '\nUse a UPI-enabled app on your phone to pay.');
+                    }).catch(() => {
+                        alert('Copy failed. UPI ID: ' + upiString);
+                    });
+                } else {
+                    alert('UPI ID: ' + upiString);
+                }
+            }, false);
+        })();
+    </script>
+
+    <script>
+        // disable right-click (preserved from your original file)
+        document.addEventListener("contextmenu", function(e) {
+            e.preventDefault();
+        }, false);
+    </script>
+</body>
+</html>

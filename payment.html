@@ -458,6 +458,7 @@
                             <div class="receiver"><strong>Chunni Lal Bairwa</strong></div>
                             <div class="upi-id">Account No: 10220100009501</div>
                             <div class="upi-id">IFSC CODE: BARB0RUPAHE </div>
+                            <div class="upi-id">Bank Name: Bank Of Baroda </div>
 
                             <!-- QUICK PAY BUTTON (only visible on tablet/phone) -->
                             <!-- Replace "chunnilalbairwa22216-4@okhdfcbank" and params with a real UPI ID if you want deep-linking -->
@@ -522,47 +523,24 @@
     </div>
 
     <script>
-    (function () {
-        const quickBtn = document.getElementById('quickPayBtn');
-        if (!quickBtn) return;
+        (function () {
+            const quickBtn = document.getElementById('quickPayBtn');
+            if (!quickBtn) return;
 
-        // Your UPI ID
-        const upiId = 'chunnilalbairwa22216-4@okhdfcbank';
-        const payeeName = 'Chunni Lal Bairwa';
+            // Your UPI ID
+            const upiId = 'chunnilalbairwa22216-4@okhdfcbank';
+            const payeeName = 'Chunni Lal Bairwa';
 
-        // Universal UPI deep link
-        const upiUrl =
-            `upi://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(payeeName)}&cu=INR`;
+            // Universal UPI deep link
+            const upiUrl =
+                `upi://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(payeeName)}&cu=INR`;
 
-        quickBtn.addEventListener('click', function (e) {
-
-            // MOBILE → Open UPI App
-            if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+            quickBtn.addEventListener('click', function () {
+                // ALWAYS open UPI app (no desktop fallback)
                 window.location.href = upiUrl;
-                return;
-            }
+            });
 
-            // DESKTOP → Copy UPI ID
-            e.preventDefault();
-
-            if (navigator.clipboard) {
-                navigator.clipboard.writeText(upiId)
-                    .then(() => {
-                        alert(
-                            "UPI ID copied:\n" +
-                            upiId +
-                            "\n\nUse any UPI app on your mobile to complete the payment."
-                        );
-                    })
-                    .catch(() => {
-                        alert("Copy failed.\nYour UPI ID: " + upiId);
-                    });
-            } else {
-                alert("Your UPI ID: " + upiId);
-            }
-        });
-
-    })();
+        })();
     </script>
 
     <script>
